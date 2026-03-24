@@ -23,9 +23,14 @@ fun Application.configureRouting() {
             
             val weatherClient = WeatherClient()
             val forecast = weatherClient.getForecast(lat, lon)
-            
+
+            if (forecast.error != null) {
+                call.respondText(forecast.error)
+                return@get
+            }
+
             call.respondText(
-                "Forecast: ${forecast.shortForecast}\nTemperature: ${forecast.temperature}°F (${forecast.getTemperatureCharacterization()})"
+                "City: ${forecast.city}, State: ${forecast.state}\nForecast: ${forecast.shortForecast}\nTemperature: ${forecast.temperature}°F (${forecast.getTemperatureCharacterization()})"
             )
         }
     }
