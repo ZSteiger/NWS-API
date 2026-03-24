@@ -1,4 +1,4 @@
-package com.example.com
+package com.nwsapi.com
 
 import io.ktor.server.application.*
 
