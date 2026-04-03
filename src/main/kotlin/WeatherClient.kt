@@ -29,7 +29,7 @@ class WeatherClient {
 
         if (gridData.status in 400..499) {
             return WeatherForecast(
-               error = "Error fetching weather for provided Lat/Long, please ensure you have the correct values and try again.")
+               error = "Error fetching weather for provided Lat/Long, please ensure you have the correct values and try again.\nLat/Long must be in the United States, and follow this format in your request:\nlat=38.242090&lon=-85.741217 (Decimal places give more accurate results for the requested location)")
         }
         
         if (gridData.status == 500) {

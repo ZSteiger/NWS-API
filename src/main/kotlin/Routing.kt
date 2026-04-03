@@ -1,11 +1,9 @@
 package com.nwsapi.com
 
-import com.nwsapi.model.WeatherForecast
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.http.*
-import kotlinx.serialization.json.internal.readJson
 
 fun Application.configureRouting() {
     routing {
