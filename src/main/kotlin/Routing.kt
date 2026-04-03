@@ -5,6 +5,7 @@ import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.http.*
+import kotlinx.serialization.json.internal.readJson
 
 fun Application.configureRouting() {
     routing {
@@ -30,7 +31,13 @@ fun Application.configureRouting() {
             }
 
             call.respondText(
-                "City: ${forecast.city}, State: ${forecast.state}\nForecast: ${forecast.shortForecast}\nTemperature: ${forecast.temperature}°F (${forecast.getTemperatureCharacterization()})"
+                """{
+                  "city": "${forecast.city}",
+                  "state": "${forecast.state}",
+                  "forecast": "${forecast.shortForecast}",
+                  "temperature": "${forecast.temperature}°F (${forecast.getTemperatureCharacterization()})"
+                }""",
+                contentType = ContentType.Application.Json
             )
         }
     }
